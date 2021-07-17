@@ -22,18 +22,16 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.deepPurple,
         accentColorBrightness: Brightness.dark,
       ),
-
-      home: AuthScreen(),
-      // home: StreamBuilder(
-      //   stream: FirebaseAuth.instance.authStateChanges(),
-      //   builder: (ctx, userSnapshot) {
-      //     return userSnapshot.hasData
-      //         ? ApplicationNavigationBar(
-      //             currentSelectedItem: 0,
-      //           )
-      //         : AuthScreen();
-      //   },
-      // ),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (ctx, userSnapshot) {
+          return userSnapshot.hasData
+              ? ApplicationNavigationBar(
+                  currentSelectedItem: 0,
+                )
+              : AuthScreen();
+        },
+      ),
     );
   }
 }
