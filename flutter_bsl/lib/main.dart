@@ -1,5 +1,5 @@
 import 'package:flutter_bsl/screens/auth_screen.dart';
-import 'package:flutter_bsl/screens/tabbar_screen.dart';
+import 'package:flutter_bsl/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,11 +25,7 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (ctx, userSnapshot) {
-          return userSnapshot.hasData
-              ? ApplicationNavigationBar(
-                  currentSelectedItem: 0,
-                )
-              : AuthScreen();
+          return userSnapshot.hasData ? HomeScreen() : AuthScreen();
         },
       ),
     );

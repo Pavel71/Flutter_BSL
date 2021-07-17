@@ -13,6 +13,7 @@ class AuthService {
 
     try {
       if (isLogin) {
+        // login
         authresult = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
         print('Authresult $authresult');
